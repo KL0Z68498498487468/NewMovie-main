@@ -12,7 +12,7 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",
     "lodash": "^4.17.23",
-    "props": "^0.3.0",
+    "props": "^0.2.3",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-fast-marquee": "^1.6.5",
