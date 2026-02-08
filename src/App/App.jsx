@@ -1,10 +1,14 @@
-import { useState } from 'react'
+
+import Header from '../Components/Home/Header'
 import './App.css'
+
 
 function App() {
 
   return (
-    <h1>Hello Movie</h1>
+    <div>
+      <Header/>
+    </div>
   )
 }
 
