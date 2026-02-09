@@ -27,70 +27,99 @@ useEffect(() => {
 }, []);
 
   return (
-    <div className="w-full h-[460px] bg-[#141414] px-[70px]">
-    <div className="w-full h-[120px] flex items-center ">
-      <div className="text-part w-[1200px] h-[120px] flex items-start flex-col justify-center">
-        <h1 className="text-white text-[28px]">
+    <div className="slider w-full min-h-[320px] md:min-h-[400px] lg:h-[460px] bg-[#141414] px-4 md:px-8 lg:px-12 xl:px-[70px] py-6 md:py-8">
+    <div className="w-full min-h-[80px] md:h-[100px] lg:h-[120px] flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-6 mb-6">
+      <div className="text-part w-full md:w-auto max-w-[1200px] flex flex-col justify-center gap-2">
+        <h1 className="text-white text-xl md:text-2xl lg:text-[28px] font-semibold">
           Explore our wide variety of categories
         </h1>
-        <p className="text-[rgba(153,153,153,1)]">
+        <p className="text-[rgba(153,153,153,1)] text-sm md:text-base">
           Whether you're looking for a comedy to make you laugh, a drama to make
           you think, or a documentary to learn something new
         </p>
       </div>
-      <div className="button-zone rounded-[10px] px-[15px] w-[155px] h-[68px] flex items-center justify-between bg-[rgba(15,15,15,1)]">
-        <div className="shevron-shell-next text-white w-[44px] h-[44px] bg-[rgba(31,31,31,1)] rounded-[6px] flex items-center justify-center">
-          <FaArrowLeft
-            onClick={() => swiperInst?.slideNext()}
-            className="text-2xl"
-          />
-        </div>
-        <div
+      
+      {/* Desktop Navigation Buttons */}
+      <div className="button-zone hidden md:flex rounded-[10px] px-[15px] w-[155px] h-[68px] items-center justify-between bg-[rgba(15,15,15,1)] flex-shrink-0">
+        <button
           onClick={() => swiperInst?.slidePrev()}
-          className="shevron-shell-prev shevron-shell text-white w-[44px] h-[44px] bg-[rgba(31,31,31,1)] rounded-[6px] flex items-center justify-center"
+          className="shevron-shell-prev text-white w-[44px] h-[44px] bg-[rgba(31,31,31,1)] hover:bg-[#e50000] rounded-[6px] flex items-center justify-center transition-colors"
+          aria-label="Previous"
         >
-          <FaArrowRight className="text-2xl" />
-        </div>
+          <FaArrowLeft className="text-xl lg:text-2xl" />
+        </button>
+        <button
+          onClick={() => swiperInst?.slideNext()}
+          className="shevron-shell-next text-white w-[44px] h-[44px] bg-[rgba(31,31,31,1)] hover:bg-[#e50000] rounded-[6px] flex items-center justify-center transition-colors"
+          aria-label="Next"
+        >
+          <FaArrowRight className="text-xl lg:text-2xl" />
+        </button>
       </div>
     </div>
-    <div className="slider-main w-full h-[340px] flex gap-x-7 overflow-hidden">
+
+    <div className="slider-main w-full h-auto">
       <Swiper
         modules={[Virtual, Navigation, Pagination]}
         onSwiper={setSwiperInst}
-        slidesPerView={6}
-        centeredSlides={true}
-        spaceBetween={30}
+        slidesPerView={2}
+        spaceBetween={12}
         pagination={{
           type: "fraction",
         }}
-        navigation={true}
-        onBeforeInit={(swiper) => {
-          ((swiper.params.navigation.prevEl = "shevron-shell-prev"),
-            (swiper.params.navigation.nextEl = "shevron-shell-next"));
+        breakpoints={{
+          480: {
+            slidesPerView: 2,
+            spaceBetween: 16,
+          },
+          640: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 4,
+            spaceBetween: 24,
+          },
+          1024: {
+            slidesPerView: 5,
+            spaceBetween: 28,
+          },
+          1280: {
+            slidesPerView: 6,
+            spaceBetween: 30,
+          },
+        }}
+        navigation={{
+          prevEl: '.shevron-shell-prev',
+          nextEl: '.shevron-shell-next',
         }}
         virtual
+        className="!pb-8"
       >
         {cinemas &&
-          cinemas.slice(0, 15).map((items) => (
-            <SwiperSlide>
-              <div className="card w-[220px] h-[330px]  bg-[rgba(38,38,38,1)] overflow-hidden rounded-[10px]">
-              <div className="c-img-part w-[239px] ">
-                <img
-                  className="w-[200px] h-67 pt-2 pl-2"
-                  src={items.poster}
-                  alt=""
-                />
+          cinemas.slice(0, 15).map((items, index) => (
+            <SwiperSlide key={items.id || index} className="!h-auto">
+              <div className="card w-full max-w-[220px] mx-auto bg-[rgba(38,38,38,1)] overflow-hidden rounded-[10px] hover:bg-[rgba(48,48,48,1)] transition-colors cursor-pointer">
+                <div className="c-img-part w-full aspect-[3/4] overflow-hidden">
+                  <img
+                    className="w-full h-full object-cover p-2"
+                    src={items.poster}
+                    alt={items.title || "Movie poster"}
+                  />
+                </div>
+                <div className="cinema-name px-4 py-4">
+                  <h1 className="text-white text-sm md:text-base truncate">
+                    {items.title}
+                  </h1>
+                </div>
               </div>
-              <div className="cinema-name pt-[20px] pl-5">
-                <h1 className="text-white">{items.title}</h1>
-              </div>
-            </div>
             </SwiperSlide>
-            
           ))}
       </Swiper>
+
+      {/* Mobile Navigation Dots - Swiper автоматически добавит pagination */}
     </div>
-  </div>
+</div>
   )
 }
 
