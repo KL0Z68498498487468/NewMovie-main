@@ -10,7 +10,7 @@ function Navbar() {
   return (
     <div className="navbar w-full h-16 md:h-20 lg:h-24.5 flex items-center justify-between px-4 md:px-8 lg:px-16 xl:px-25 fixed z-50 bg-black/80 backdrop-blur-sm">
     <div className="logo flex-shrink-0">
-        <img src="/public/images/logo.svg" className="h-8 md:h-10 lg:h-12" alt="Logo" />
+        <img src="/images/logo.svg" className="h-8 md:h-10 lg:h-12" alt="Logo" />
     </div>
     
     {/* Desktop Navigation */}

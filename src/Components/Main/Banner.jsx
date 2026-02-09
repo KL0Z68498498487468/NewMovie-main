@@ -3,7 +3,7 @@ import React from 'react'
 function Banner() {
   return (
     <div className="banner w-full px-4 md:px-8 lg:px-12 xl:px-[70px] py-8 md:py-12 lg:py-16 bg-[#141414]">
-    <div className="main-banner relative flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8 lg:gap-12 px-6 md:px-10 lg:px-14 py-8 md:py-10 lg:py-12 w-full max-w-7xl mx-auto bg-[url('../../../public/images/backgroundImages.png')] bg-cover bg-center rounded-xl md:rounded-2xl overflow-hidden">
+    <div className="main-banner relative flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8 lg:gap-12 px-6 md:px-10 lg:px-14 py-8 md:py-10 lg:py-12 w-full max-w-7xl mx-auto bg-[url('/images/backgroundImages.png')] bg-cover bg-center rounded-xl md:rounded-2xl overflow-hidden">
         {/* Dark Overlay for better text readability */}
         <div className="absolute inset-0 bg-black/40 -z-10"></div>
         
