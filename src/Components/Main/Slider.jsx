@@ -17,7 +17,7 @@ const [swiperInst, setSwiperInst] = useState(null);
 
 
 async function api() {
-  let responce = await fetch('http://localhost:3000/cinema');
+  let responce = await fetch('https://698a2fe5c04d974bc6a1a138.mockapi.io/movieProjectDatas');
   let data = await responce.json();
   setCinemas(data);
 }
