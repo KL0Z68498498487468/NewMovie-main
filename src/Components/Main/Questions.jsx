@@ -20,7 +20,7 @@ function Questions() {
           </p>
         </div>
         <div className="qh-button">
-            <button className="px-4 py-4 bg-[#e50000] rounded-lg" type="button">Ask a Question</button>
+            <button className="px-4 py-4 bg-[#e50000] rounded-lg text-white" type="button">Ask a Question</button>
         </div>
       </div>
       <div className="question-main w-full h-155 flex">
