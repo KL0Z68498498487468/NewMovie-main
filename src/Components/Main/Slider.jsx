@@ -85,7 +85,7 @@ useEffect(() => {
             spaceBetween: 28,
           },
           1280: {
-            slidesPerView: 6,
+            slidesPerView: 5,
             spaceBetween: 30,
           },
         }}
@@ -99,7 +99,7 @@ useEffect(() => {
         {cinemas &&
           cinemas.slice(0, 15).map((items, index) => (
             <SwiperSlide key={items.id || index} className="!h-auto">
-              <div className="card w-full max-w-[220px] mx-auto bg-[rgba(38,38,38,1)] overflow-hidden rounded-[10px] hover:bg-[rgba(48,48,48,1)] transition-colors cursor-pointer">
+              <div className="card w-full max-w-[260px] mx-auto bg-[rgba(38,38,38,1)] overflow-hidden rounded-[10px] hover:bg-[rgba(48,48,48,1)] transition-colors cursor-pointer">
                 <div className="c-img-part w-full aspect-[3/4] overflow-hidden">
                   <img
                     className="w-full h-full object-cover p-2"
@@ -117,7 +117,6 @@ useEffect(() => {
           ))}
       </Swiper>
 
-      {/* Mobile Navigation Dots - Swiper автоматически добавит pagination */}
     </div>
 </div>
   )

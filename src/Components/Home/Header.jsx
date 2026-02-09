@@ -56,7 +56,7 @@ function Header() {
             </Marquee>
         </div>
     </div>
-    <div className="layer-2 w-full px-4 md:px-8 lg:px-16 xl:px-38 text-center h-screen absolute z-2 bg-gradient-to-t from-[#141414]/100 from-10% via-black/70 to-[#141414] flex items-center justify-center flex-col gap-y-2 md:gap-y-3 lg:gap-y-3.75 pt-16 md:pt-20 lg:pt-25">
+    <div className="layer-2 w-full px-4 md:px-8 lg:px-16 xl:px-38 text-center h-screen absolute z-2 bg-gradient-to-t from-[#141414]/100 from-10% via-black/70 to-[#141414] flex items-center justify-center flex-col gap-y-2 backdrop-blur-xs md:gap-y-3 lg:gap-y-3.75 pt-16 md:pt-20 lg:pt-25">
         <img src="/public/images/Abstract Design.svg" className='w-40 md:w-52 lg:w-60 xl:w-67.5' alt="" />
         <h1 className='text-white text-xl md:text-2xl lg:text-[28px] font-bold px-2'>The Best Streaming Experience</h1>
         <p className='text-[rgba(153,153,153,1)] text-xs md:text-sm lg:text-[14px] px-4 md:px-8 lg:px-12 max-w-4xl'>StreamVibe is the best streaming experience for watching your favorite movies and shows on demand, anytime, anywhere. With StreamVibe, you can enjoy a wide variety of content, including the latest blockbusters, classic movies, popular TV shows, and more. You can also create your own watchlists, so you can easily find the content you want to watch.</p>

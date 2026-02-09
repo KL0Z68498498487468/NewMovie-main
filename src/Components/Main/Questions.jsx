@@ -68,7 +68,7 @@ function Questions() {
                     }}
                 >
                     <div className="num w-10 h-10 md:w-12 md:h-12 lg:w-13.5 lg:h-13.5 mr-3 md:mr-5 lg:mr-7 flex items-center justify-center bg-[rgba(38,38,38,1)] rounded-lg text-sm md:text-base flex-shrink-0">
-                        01
+                        1
                     </div>
                     <Typography component="span" className="text-sm md:text-base lg:text-lg font-medium">
                         What is StreamVibe?
@@ -112,7 +112,7 @@ function Questions() {
                     }}
                 >
                     <div className="num w-10 h-10 md:w-12 md:h-12 lg:w-13.5 lg:h-13.5 mr-3 md:mr-5 lg:mr-7 flex items-center justify-center bg-[rgba(38,38,38,1)] rounded-lg text-sm md:text-base flex-shrink-0">
-                        02
+                        2
                     </div>
                     <Typography component="span" className="text-sm md:text-base lg:text-lg font-medium">
                         How much does StreamVibe cost?
@@ -155,8 +155,8 @@ function Questions() {
                         }
                     }}
                 >
-                    <div className="num w-10 h-10 md:w-12 md:h-12 lg:w-13.5 lg:h-13.5 mr-3 md:pr-5 lg:mr-7 flex items-center justify-center bg-[rgba(38,38,38,1)] rounded-lg text-sm md:text-base flex-shrink-0">
-                        03
+                    <div className="felx num w-10 h-10 md:w-12 md:h-12 lg:w-13.5 lg:h-13.5 mr-3 md:pr-0 lg:mr-7 flex items-center justify-center bg-[rgba(38,38,38,1)] rounded-lg text-sm md:text-base flex-shrink-0 ">
+                        3
                     </div>
                     <Typography component="span" className="text-sm md:text-base lg:text-lg font-medium">
                         What content is available on StreamVibe?
@@ -200,7 +200,7 @@ function Questions() {
                     }}
                 >
                     <div className="num w-10 h-10 md:w-12 md:h-12 lg:w-13.5 lg:h-13.5 mr-3 md:mr-5 lg:mr-7 flex items-center justify-center bg-[rgba(38,38,38,1)] rounded-lg text-sm md:text-base flex-shrink-0">
-                        04
+                        4
                     </div>
                     <Typography component="span" className="text-sm md:text-base lg:text-lg font-medium">
                         How do I cancel my subscription?
@@ -247,7 +247,7 @@ function Questions() {
                     }}
                 >
                     <div className="num w-10 h-10 md:w-12 md:h-12 lg:w-13.5 lg:h-13.5 mr-3 md:mr-5 lg:mr-7 flex items-center justify-center bg-[rgba(38,38,38,1)] rounded-lg text-sm md:text-base flex-shrink-0">
-                        05
+                        5
                     </div>
                     <Typography component="span" className="text-sm md:text-base lg:text-lg font-medium">
                         Can I watch on multiple devices?
@@ -291,7 +291,7 @@ function Questions() {
                     }}
                 >
                     <div className="num w-10 h-10 md:w-12 md:h-12 lg:w-13.5 lg:h-13.5 mr-3 md:mr-5 lg:mr-7 flex items-center justify-center bg-[rgba(38,38,38,1)] rounded-lg text-sm md:text-base flex-shrink-0">
-                        06
+                        6
                     </div>
                     <Typography component="span" className="text-sm md:text-base lg:text-lg font-medium">
                         Is there a free trial available?
