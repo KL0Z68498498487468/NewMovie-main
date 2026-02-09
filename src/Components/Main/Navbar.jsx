@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { FaBars } from 'react-icons/fa'
 import { FaBell, FaMagnifyingGlass } from 'react-icons/fa6'
 
 function Navbar() {
+
+    const [isMenuOpen, setIsmenuopen] = useState(false)
+    
+
   return (
     <div className="navbar w-full h-16 md:h-20 lg:h-24.5 flex items-center justify-between px-4 md:px-8 lg:px-16 xl:px-25 fixed z-50 bg-black/80 backdrop-blur-sm">
     <div className="logo flex-shrink-0">
@@ -36,15 +41,11 @@ function Navbar() {
         
         {/* Mobile Menu Button */}
         <button className="lg:hidden flex flex-col gap-1 w-6 h-5" aria-label="Menu">
-            <span className="w-full h-0.5 bg-white"></span>
-            <span className="w-full h-0.5 bg-white"></span>
-            <span className="w-full h-0.5 bg-white"></span>
+            <FaBars className="size-7" onClick={()=> {setIsmenuopen(!isMenuOpen)}}/>
         </button>
     </div>
 
-    {/* Mobile Menu (добавь state для открытия/закрытия) */}
-    {/* Пример:
-    <div className={`lg:hidden fixed top-16 md:top-20 left-0 w-full bg-black border-t border-[#282828] ${isMenuOpen ? 'block' : 'hidden'}`}>
+    <div className={`lg:hidden fixed top-16 md:top-20 left-0 w-full bg-black border-t border-[#282828]  ${isMenuOpen ? 'block' : 'hidden'}`}>
         <ul className='flex flex-col gap-y-4 p-6 text-white'>
             <li className="cursor-pointer hover:text-[#e50000] transition-colors">Home</li>
             <li className="cursor-pointer hover:text-[#e50000] transition-colors">Movies & Shows</li>
@@ -55,7 +56,6 @@ function Navbar() {
             </li>
         </ul>
     </div>
-    */}
 </div>
   )
 }
