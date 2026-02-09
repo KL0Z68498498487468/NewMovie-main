@@ -32,7 +32,7 @@ function Header() {
             row1 && row1.slice(0, 10).map( items => (
                 
                     <div className='w-full'>
-                        <img className='w-[200px] h-67 px-2' src={items.poster} alt="" />
+                        <img className='w-50 h-67 px-2' src={items.poster} alt="" />
                     </div>
                 
             ))
@@ -62,10 +62,10 @@ function Header() {
                 </Marquee>
             </div>
         </div>
-        <div className="layer-2 w-full px-38 text-center h-screen absolute z-2 bg-gradient-to-t from-[#141414]/100 from-10% via-black/70 to-[#141414] flex items-center justify-center flex-col gap-y-[15px] pt-25">
-        <img src="/public/images/Abstract Design.svg" className='w-[270px]' alt="" />
-        <h1 className='text-white text-[48px] font-bold'>The Best Streaming Experience</h1>
-        <p className='text-[rgba(153,153,153,1)]'>StreamVibe is the best streaming experience for watching your favorite movies and shows on demand, anytime, anywhere. With StreamVibe, you can enjoy a wide variety of content, including the latest blockbusters, classic movies, popular TV shows, and more. You can also create your own watchlists, so you can easily find the content you want to watch.</p>
+        <div className="layer-2 w-full px-38 text-center h-screen absolute z-2 bg-gradient-to-t from-[#141414]/100 from-10% via-black/70 to-[#141414] flex items-center justify-center flex-col gap-y-3.75 pt-25">
+        <img src="/public/images/Abstract Design.svg" className='w-67.5' alt="" />
+        <h1 className='text-white text-[28px] font-bold'>The Best Streaming Experience</h1>
+        <p className='text-[rgba(153,153,153,1)] min-[350px]: text-[14px]'>StreamVibe is the best streaming experience for watching your favorite movies and shows on demand, anytime, anywhere. With StreamVibe, you can enjoy a wide variety of content, including the latest blockbusters, classic movies, popular TV shows, and more. You can also create your own watchlists, so you can easily find the content you want to watch.</p>
         <div className=''>
             <button className='flex px-4 py-4 bg-[#e50000] text-white items-center gap-x-3 rounded-[8px]' type="button">
                 <FaPlay className='flex'/> Start Watching Now

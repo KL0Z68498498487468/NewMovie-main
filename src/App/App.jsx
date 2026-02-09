@@ -1,4 +1,5 @@
 
+import Questions from '@/Components/Main/Questions'
 import Devices from '../Components/Home/Devices'
 import Header from '../Components/Home/Header'
 import Slider from '../Components/Main/Slider'
@@ -12,6 +13,7 @@ function App() {
       <Header/>
       <Slider/>
       <Devices/>
+      <Questions/>
     </div>
   )
 }
