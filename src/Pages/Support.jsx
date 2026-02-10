@@ -24,7 +24,7 @@ const Support = () => {
             {/* Images Grid Container */}
             <div className="images-container w-full max-w-[650px] bg-[rgba(15,15,15,1)] border border-[#282828] rounded-xl p-4 md:p-5 lg:p-6">
                 <div className=" images-grid flex flex-wrap gap-3 md:gap-4">
-                    <img src="/public/images/support-img.png" alt="" />
+                    <img src="/images/support-img.png" alt="" />
                 </div>
             </div>
         </div>
@@ -79,7 +79,9 @@ const Support = () => {
                         <div className="phone-input-wrapper flex gap-2">
                             {/* Country Code Selector */}
                             <div className="country-code flex items-center gap-2 px-3 md:px-4 py-3 md:py-4 bg-[#0f0f0f] border border-[#262626] rounded-lg">
-                                <div className="flag w-6 h-4 bg-gradient-to-b from-[#00843D] via-white to-[#CE1126] rounded-sm"></div>
+                                <div className="flag w-6 h-4">
+                                    <img src="/images/uz.png" alt="" />
+                                </div>
                                 <FaChevronDown className="text-[rgba(153,153,153,1)] text-xs" />
                             </div>
                             {/* Phone Input */}
