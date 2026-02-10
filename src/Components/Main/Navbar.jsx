@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { FaBars } from 'react-icons/fa'
 import { FaBell, FaMagnifyingGlass } from 'react-icons/fa6'
+import { NavLink } from 'react-router-dom'
 
 function Navbar() {
 
@@ -16,15 +17,22 @@ function Navbar() {
     {/* Desktop Navigation */}
     <div className="nav-center hidden lg:flex h-15.25 w-auto items-center px-5 text-white bg-black border-3 border-[#282828] rounded-[10px]">
         <ul className='flex gap-x-4 xl:gap-x-[20px]'>
-            <li className="page-shell flex items-center cursor-pointer hover:text-[#e50000] transition-colors px-3">
+            <NavLink to={'/'}>
+                <li className="page-shell h-full flex items-center cursor-pointer hover:text-[#e50000] transition-colors px-3">
                 Home
             </li>
-            <li className="page-shell flex items-center cursor-pointer hover:text-[#e50000] transition-colors px-3 whitespace-nowrap">
+            </NavLink>
+            <NavLink to={'/movieshow'}>
+                <li className="page-shell h-full flex items-center cursor-pointer hover:text-[#e50000] transition-colors px-3 whitespace-nowrap">
                 Movies & Shows
             </li>
-            <li className="page-shell flex items-center cursor-pointer hover:text-[#e50000] transition-colors px-3">
+            </NavLink>
+            <NavLink to={"/support"}>
+                <li className="page-shell h-full flex items-center cursor-pointer hover:text-[#e50000] transition-colors px-3">
                 Support
             </li>
+            </NavLink>
+            
             <li className="page-shell flex items-center cursor-pointer hover:text-[#e50000] transition-colors px-3">
                 Subscriptions
             </li>

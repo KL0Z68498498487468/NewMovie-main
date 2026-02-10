@@ -9,7 +9,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 
-function Slider() {
+function Sliderui() {
   const [cinemas, setCinemas] = useState();
 
 const [swiperInst, setSwiperInst] = useState(null);
@@ -27,7 +27,7 @@ useEffect(() => {
 }, []);
 
   return (
-    <div className="slider w-full min-h-[320px] md:min-h-[400px] lg:h-[460px] bg-[#141414] px-4 md:px-8 lg:px-12 xl:px-[70px] py-6 md:py-8">
+    <div className="slider w-full min-h-[320px] md:min-h-[400px] lg:h-[530px] bg-[#141414] px-4 md:px-8 lg:px-12 xl:px-[70px] py-6 md:py-8">
     <div className="w-full min-h-[80px] md:h-[100px] lg:h-[120px] flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-6 mb-6">
       <div className="text-part w-full md:w-auto max-w-[1200px] flex flex-col justify-center gap-2">
         <h1 className="text-white text-xl md:text-2xl lg:text-[28px] font-semibold">
@@ -122,4 +122,4 @@ useEffect(() => {
   )
 }
 
-export default Slider
+export default Sliderui

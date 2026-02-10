@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import Navbar from '../Main/Navbar'
 import Marquee from 'react-fast-marquee'
 import { shuffle } from 'lodash'
 import { FaPlay } from 'react-icons/fa6'
@@ -23,7 +22,7 @@ function Header() {
 
   return (
     <div>
-        <Navbar/>
+        
             <div className="hero w-full h-screen overflow-y-hidden relative">
     <div className="1-layer w-full h-screen bg-[#141414] absolute z-1">
         <div className="line-1 flex flex-col gap-y-2 md:gap-y-4">
