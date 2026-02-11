@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { FaBars } from 'react-icons/fa'
 import { FaBell, FaMagnifyingGlass } from 'react-icons/fa6'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 function Navbar() {
 
@@ -32,10 +32,12 @@ function Navbar() {
                 Support
             </li>
             </NavLink>
-            
-            <li className="page-shell flex items-center cursor-pointer hover:text-[#e50000] transition-colors px-3">
+            <NavLink to={"/subscriptions"}>
+                <li className="page-shell h-full flex items-center cursor-pointer hover:text-[#e50000] transition-colors px-3">
                 Subscriptions
             </li>
+            </NavLink>
+            
             <li className="button-shell">
                 <input className='py-2 lg:py-[10px] px-4 lg:px-[24px] bg-[#e50000] rounded-[8px] cursor-pointer hover:bg-[#c50000] transition-colors' type="button" value="Logout" />
             </li>
@@ -55,10 +57,19 @@ function Navbar() {
 
     <div className={`lg:hidden fixed top-16 md:top-20 left-0 w-full bg-black border-t border-[#282828]  ${isMenuOpen ? 'block' : 'hidden'}`}>
         <ul className='flex flex-col gap-y-4 p-6 text-white'>
+            <Link to={'/'}>
             <li className="cursor-pointer hover:text-[#e50000] transition-colors">Home</li>
+            </Link>
+            <Link to={'/movieshow'}>
             <li className="cursor-pointer hover:text-[#e50000] transition-colors">Movies & Shows</li>
+            </Link>
+            <Link to={'/support'}>
             <li className="cursor-pointer hover:text-[#e50000] transition-colors">Support</li>
+            </Link>
+            <Link to={"/subscriptions"}>
             <li className="cursor-pointer hover:text-[#e50000] transition-colors">Subscriptions</li>
+            </Link>
+            
             <li>
                 <input className='w-full py-3 px-6 bg-[#e50000] rounded-[8px] cursor-pointer hover:bg-[#c50000] transition-colors' type="button" value="Logout" />
             </li>

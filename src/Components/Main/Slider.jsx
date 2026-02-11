@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 import { Virtual, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Link, useNavigate } from "react-router-dom";
 
 // Import Swiper styles
 import "swiper/css";
@@ -24,7 +25,14 @@ async function api() {
 
 useEffect(() => {
   api();
+  
 }, []);
+
+
+
+
+  const [id, setId] = useState()
+  
 
   return (
     <div className="slider w-full min-h-[320px] md:min-h-[400px] lg:h-[530px] bg-[#141414] px-4 md:px-8 lg:px-12 xl:px-[70px] py-6 md:py-8">
@@ -99,7 +107,8 @@ useEffect(() => {
         {cinemas &&
           cinemas.slice(0, 15).map((items, index) => (
             <SwiperSlide key={items.id || index} className="!h-auto">
-              <div className="card w-full max-w-[260px] mx-auto bg-[rgba(38,38,38,1)] overflow-hidden rounded-[10px] hover:bg-[rgba(48,48,48,1)] transition-colors cursor-pointer">
+              <Link to={"/movie_inside"}>
+              <div onClick={() => setId(items.id)} className="card w-full max-w-[260px] mx-auto bg-[rgba(38,38,38,1)] overflow-hidden rounded-[10px] hover:bg-[rgba(48,48,48,1)] transition-colors cursor-pointer">
                 <div className="c-img-part w-full aspect-[3/4] overflow-hidden">
                   <img
                     className="w-full h-full object-cover p-2"
@@ -113,6 +122,8 @@ useEffect(() => {
                   </h1>
                 </div>
               </div>
+              </Link>
+              
             </SwiperSlide>
           ))}
       </Swiper>

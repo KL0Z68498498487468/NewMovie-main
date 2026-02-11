@@ -12,6 +12,9 @@ import Movies from '@/Pages/Movies'
 import Home from '@/Pages/Home'
 import Navbar from '@/Components/Main/Navbar'
 import Support from '@/Pages/Support'
+import Subscription from '@/Pages/Subscription'
+import Movie_inside from '@/Pages/Movie_inside'
+import { useState } from 'react'
 
 
 function App() {
@@ -23,6 +26,8 @@ function App() {
       <Route path='/' element={<Home/>}/>
       <Route path='/movieshow' element={<Movies/>}/>
       <Route path='/support' element={<Support/>}/>
+      <Route path='/subscriptions' element={<Subscription/>}/>
+      <Route path='/movie_inside' element={<Movie_inside/>}/>
     </Routes>
     </BrowserRouter>
   )
