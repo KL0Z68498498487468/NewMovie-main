@@ -26,7 +26,7 @@ const [swiperInst, setSwiperInst] = useState(null);
     <div className="img-container relative w-full max-w-[1400px] h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] rounded-xl lg:rounded-2xl overflow-hidden shadow-2xl">
       {/* Background Image with Overlay */}
       <div 
-        className="absolute inset-0 bg-[url(/public/images/max-bvp-yYZAY0iaAgM-unsplash.jpg)] bg-cover bg-center"
+        className="absolute inset-0 bg-[url(/images/max-bvp-yYZAY0iaAgM-unsplash.jpg)] bg-cover bg-center"
       ></div>
       <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent"></div>
       
