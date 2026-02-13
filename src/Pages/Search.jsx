@@ -3,11 +3,11 @@ import { FaChevronLeft, FaChevronRight, FaSearch, FaStar } from 'react-icons/fa'
 
 function Search() {
   return (
-    <div className="search-page w-full min-h-screen bg-[#141414] px-4 md:px-8 lg:px-12 xl:px-20 py-8 md:py-12 lg:py-16">
+    <div className="search-page w-full min-h-screen bg-[#141414] px-4 pt-10 md:px-8 lg:px-12  xl:px-20  md:py-12  lg:py-16 ">
     <div className="search-container max-w-[1400px] mx-auto">
         
         {/* Search Header */}
-        <div className="search-header mb-8 md:mb-10 lg:mb-12">
+        <div className="search-header mb-8 md:mb-10 pt-14 lg:mb-12">
             <h1 className="text-white text-2xl md:text-3xl lg:text-4xl font-bold mb-6 md:mb-8">
                 Search
             </h1>
