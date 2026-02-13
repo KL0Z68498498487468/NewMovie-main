@@ -25,7 +25,7 @@ function Register() {
             <div className="form-wrapper w-full max-w-[520px]">
                 
                 {/* Header */}
-                <h1 className="text-white text-2xl md:text-3xl lg:text-[32px] xl:text-[36px] font-bold text-center mb-8 md:mb-10 lg:mb-12">
+                <h1 className="text-white text-2xl md:text-3xl pt-14 lg:text-[32px] xl:text-[36px] font-bold text-center mb-8 md:mb-10 lg:mb-12">
                     Please login to use our app
                 </h1>
 
