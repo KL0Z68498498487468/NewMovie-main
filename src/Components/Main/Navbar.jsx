@@ -9,7 +9,7 @@ function Navbar() {
     
 
   return (
-    <div className="navbar w-full h-16 md:h-20 lg:h-24.5 flex items-center justify-between px-4 md:px-8 lg:px-16 xl:px-25 fixed z-50 bg-black/80 backdrop-blur-sm">
+    <div className="navbar w-full h-16 md:h-20 lg:h-24.5 flex items-center justify-between px-4 md:px-8 lg:px-16 xl:px-25 fixed z-50 bg-black/30 backdrop-blur-sm">
     <div className="logo flex-shrink-0">
         <img src="/images/logo.svg" className="h-8 md:h-10 lg:h-12" alt="Logo" />
     </div>
@@ -37,16 +37,21 @@ function Navbar() {
                 Subscriptions
             </li>
             </NavLink>
-            
-            <li className="button-shell">
-                <input className='py-2 lg:py-[10px] px-4 lg:px-[24px] bg-[#e50000] rounded-[8px] cursor-pointer hover:bg-[#c50000] transition-colors' type="button" value="Logout" />
+            <NavLink to={"/reg"}>
+                <li className="button-shell">
+                <input className='py-2 lg:py-[10px] px-4 lg:px-[24px] bg-[#e50000] rounded-[8px] cursor-pointer hover:bg-[#c50000] transition-colors' type="button" value="Login/Sign" />
             </li>
+            </NavLink>
+            
         </ul>
     </div>
 
     {/* Mobile & Tablet Icons + Menu Button */}
     <div className="nav-items flex items-center gap-x-3 md:gap-x-4 text-white">
+        <Link to={"/search"}>
         <FaMagnifyingGlass className='size-4 md:size-5 cursor-pointer hover:text-[#e50000] transition-colors'/>
+        </Link>
+        
         <FaBell className='size-4 md:size-5 cursor-pointer hover:text-[#e50000] transition-colors'/>
         
         {/* Mobile Menu Button */}
