@@ -26,7 +26,7 @@ import Api_Service from "@/service/Api.Service";
 const Movie_inside = () => {
 
   const testApi = async () => {
-    const responce = await Api_Service.getData(`/movie/${id}?append_to_response=credits`)
+    const responce = await Api_Service.getData(`/movie/${id}?append_to_response=credits,videos`)
     setMoviedata(responce);
 
   }
@@ -45,7 +45,7 @@ const Movie_inside = () => {
   const { id } = useParams();
 
   const [moviedata, setMoviedata] = useState();
-  console.log(moviedata?.credits.crew);
+  console.log(moviedata);
 
 
 
@@ -57,15 +57,18 @@ const Movie_inside = () => {
           <div className="img-container relative w-full max-w-[1400px] h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] rounded-xl lg:rounded-2xl overflow-hidden shadow-2xl">
             {/* Background Image with Overlay */}
             {trailer ? (
-              <iframe
+              moviedata?.videos.results.filter((r) => r.site === "YouTube" && r.type == "Trailer").map((trailerVideo) => (
+                <iframe
+                key={trailerVideo.id}
                 className="w-full h-full"
-                src="https://www.youtube.com/embed/3pPpNmunqJY?si=Hci-aaZ8Q_tvjoYI?autoplay=1"
+                src={`https://www.youtube.com/embed/${trailerVideo.key}`}
                 title="YouTube video player"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerpolicy="strict-origin-when-cross-origin"
                 allowfullscreen
               ></iframe>
+              ))
             ) : (
 
               <div
@@ -143,6 +146,10 @@ const Movie_inside = () => {
                         type: "fraction",
                       }}
                       breakpoints={{
+                        350: {
+                          slidesPerView: 2,
+                          
+                        },
                         480: {
                           slidesPerView: 4,
                           spaceBetween: 16,
@@ -170,6 +177,8 @@ const Movie_inside = () => {
                       }}
                     >
                       {moviedata?.credits?.cast?.map(actor => (
+                        
+                        
                         <SwiperSlide
                           key={actor.id}>
                           <Link to={`/actor/${actor.id}`}>
@@ -528,12 +537,12 @@ const Movie_inside = () => {
                     }
                   </div>
                   <div>
-                    <h4 className="text-white text-base md:text-lg font-semibold">
+                    
                       {moviedata?.credits.crew.filter((person) => person.job === "Original Music Composer").map((director) => (
                       <h3 className="text-white text-base md:text-lg font-semibold" key={director.id}>{director.name}</h3>
                     ))
                     }
-                    </h4>
+                   
                     
                   </div>
                 </div>
