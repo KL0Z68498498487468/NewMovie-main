@@ -534,7 +534,7 @@ const Movie_inside = () => {
                     ))
                     }
                     </h4>
-                    <p className="text-[#666] text-sm">John Williams</p>
+                    
                   </div>
                 </div>
               </div>
