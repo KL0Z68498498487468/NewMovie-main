@@ -45,7 +45,6 @@ const Movie_inside = () => {
   const { id } = useParams();
 
   const [moviedata, setMoviedata] = useState();
-  console.log(moviedata);
 
 
 

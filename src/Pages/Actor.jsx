@@ -10,7 +10,6 @@ function Actor() {
     const actorInfo = useParams()
 
     const [actorData, setActorData] = useState()
-    console.log(actorData);
     
 
     const actorDatas = async () => {
@@ -29,8 +28,8 @@ function Actor() {
 
     return (
         <div>
-            <div className='pt-14 bg-[#1a1a1a]'>
-                <div className="actor-page w-full min-h-screen bg-[#1a1a1a] px-4 md:px-8 lg:px-12 xl:px-20 py-12 md:py-16 lg:py-24">
+            <div className='pt-14 bg-[#141414]'>
+                <div className="actor-page w-full min-h-screen bg-[#141414] px-4 md:px-8 lg:px-12 xl:px-20 py-12 md:py-16 lg:py-24">
                     <div className="actor-container max-w-[1400px] mx-auto">
                         {/* Actor Info Section */}
                         <div className="actor-info flex flex-col lg:flex-row gap-8 md:gap-12 lg:gap-16 xl:gap-20">

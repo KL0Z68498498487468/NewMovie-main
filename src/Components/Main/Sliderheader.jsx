@@ -21,7 +21,6 @@ const [swiperInst, setSwiperInst] = useState(null);
 const getMovies = async () => {
   const responce = await Api_Service.getData("/trending/movie/day")
   setCinemas(responce.results)
-  console.log(responce);
   
 }
 
