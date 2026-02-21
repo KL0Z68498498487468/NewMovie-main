@@ -2,7 +2,7 @@ import Banner from "@/Components/Main/Banner";
 import Footer from "@/Components/Main/Footer";
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Navigation, Virtual } from "swiper/modules";
+import { Pagination, Navigation } from "swiper/modules";
 
 // Import Swiper styles
 import "swiper/css";
@@ -21,36 +21,39 @@ import {
 } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import Api_Service from "@/service/Api.Service";
 
 const Movie_inside = () => {
+
+  const testApi = async () => {
+    const responce = await Api_Service.getData(`/movie/${id}?append_to_response=credits`)
+    setMoviedata(responce);
+
+  }
+
+  useEffect(() => {
+    testApi()
+    document.documentElement.scrollTop = 0;
+  }, []);
+
+
   const [trailer, setTrailer] = useState(false);
 
   const [swiperInst, setSwiperInst] = useState(null);
+  const [swipercast, setSwipercast] = useState(null);
 
   const { id } = useParams();
 
-  const [moviedata, setMoviedata] = useState({ cast: [] });
+  const [moviedata, setMoviedata] = useState();
+  console.log(moviedata?.credits.crew);
 
-
-
-  const getApi = async () => {
-    let responce = await fetch(
-      `https://698a2fe5c04d974bc6a1a138.mockapi.io/movieProjectDatas/${id}`,
-    );
-    let data = await responce.json();
-    setMoviedata(data);
-  };
-
-  useEffect(() => {
-    getApi();
-  }, []);
 
 
   return (
     <div className="mov">
       <div className="Movie_inside w-full min-h-screen bg-[#141414]">
         {/* Hero Banner */}
-        <div className="movie-header-banner w-full min-h-[50vh] md:min-h-[60vh] lg:min-h-[70vh] flex items-center justify-center px-4 md:px-8 lg:px-12 xl:px-20 py-19 py-8 md:py-12 lg:py-16">
+        <div className="movie-header-banner w-full min-h-[50vh] md:px-8 lg:px-12 xl:px-20 py-8 md:py-12 lg:py-16">
           <div className="img-container relative w-full max-w-[1400px] h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] rounded-xl lg:rounded-2xl overflow-hidden shadow-2xl">
             {/* Background Image with Overlay */}
             {trailer ? (
@@ -64,27 +67,25 @@ const Movie_inside = () => {
                 allowfullscreen
               ></iframe>
             ) : (
-              
+
               <div
-                style={{ backgroundImage: `url(${moviedata?.banner})` }}
+                style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${moviedata?.backdrop_path})` }}
                 className="absolute inset-0 bg-cover bg-center"
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent"></div>
               </div>
-              
+
             )}
 
-            
+
 
             {/* Content */}
             <div className="relative h-full flex flex-col items-center justify-end text-center text-white px-4 md:px-8 lg:px-16 pb-8 md:pb-12 lg:pb-16 gap-y-3 md:gap-y-4">
               <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-3xl font-bold max-w-4xl">
-                {moviedata.title}
+                {moviedata?.original_title}
               </h1>
               <p className="text-sm md:text-base lg:text-lg text-[#999999] max-w-3xl leading-relaxed">
-                The true story of how businessman Oskar Schindler saved over a
-                thousand Jewish lives from the Nazis while they worked as slaves
-                in his factory during World War II.
+                {moviedata?.overview}
               </p>
               <div className="button-zone flex flex-wrap gap-3 md:gap-4 mt-2 md:mt-4">
                 <button
@@ -101,7 +102,7 @@ const Movie_inside = () => {
 
         {/* Info Section */}
         <div className="info w-full px-4 md:px-8 lg:px-12 xl:px-20 py-8 md:py-12 lg:py-16">
-          <div className="info-container max-w-[1400px] mx-auto flex flex-col lg:flex-row gap-8 lg:gap-12">
+          <div className="info-container max-w-[1400px] mx-auto flex flex-col lg:flex-row gap-8 lg:gap-12 flex-wrap">
             {/* Left Part - Main Content */}
             <div className="part-1 w-full lg:w-[850px] flex flex-col gap-6 md:gap-8">
               {/* Description */}
@@ -110,9 +111,7 @@ const Movie_inside = () => {
                   Description
                 </h2>
                 <p className=" text-white text-sm md:text-base lg:text-[19px] leading-relaxed">
-                  The true story of how businessman Oskar Schindler saved over a
-                  thousand Jewish lives from the Nazis while they worked as
-                  slaves in his factory during World War II.
+                  {moviedata?.overview}
                 </p>
               </div>
 
@@ -123,39 +122,80 @@ const Movie_inside = () => {
                     Cast
                   </h2>
                   <div className="cast-navigation flex gap-3">
-                    <button className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-[#0f0f0f] hover:bg-[#1f1f1f] border border-[#333] rounded-lg transition-colors">
-                      <FaChevronLeft className="text-white text-sm md:text-base" />
+                    <button className="FaChevronLeft w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-[#0f0f0f] hover:bg-[#1f1f1f] border border-[#333] rounded-lg transition-colors">
+                      <FaChevronLeft className=" text-white text-sm md:text-base" />
                     </button>
-                    <button className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-[#0f0f0f] hover:bg-[#1f1f1f] border border-[#333] rounded-lg transition-colors">
-                      <FaChevronRight className="text-white text-sm md:text-base" />
+                    <button className="FaChevronRight w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-[#0f0f0f] hover:bg-[#1f1f1f] border border-[#333] rounded-lg transition-colors">
+                      <FaChevronRight className=" text-white text-sm md:text-base" />
                     </button>
                   </div>
                 </div>
 
                 <div className="cast-slider overflow-hidden">
                   <div className="cast-track flex gap-4 md:gap-5">
-                    {moviedata.cast.slice(0, 3).map((items, index) => (
-                      <Link to={`/actor/${items.id}`}>
-                      <div
-                        key={items.id || index}
-                        className="cast-card w-[100px] md:w-[120px] lg:w-[105px]"
-                      >
-                        <div className="actor-image w-full aspect-square bg-gradient-to-br from-[#333] to-[#1a1a1a] rounded-xl mb-2 overflow-hidden border border-[#333]">
-                          <img
-                            onError={(e) => {
-                              e.target.src =
-                                "https://m-carwash.com/wp-content/uploads/2021/02/07.jpg";
-                            }}
-                            referrerPolicy="no-referrer"
-                            src={items.photo}
-                            alt=""
-                            className="w-full h-35"
-                          />
-                        </div>
-                      </div>
-                      </Link>
-                      
-                    ))}
+                    <Swiper
+                      className="w-full"
+                      modules={[Navigation, Pagination]}
+                      onSwiper={setSwipercast}
+                      slidesPerView={6}
+                      spaceBetween={0}
+                      pagination={{
+                        type: "fraction",
+                      }}
+                      breakpoints={{
+                        480: {
+                          slidesPerView: 4,
+                          spaceBetween: 16,
+                        },
+                        640: {
+                          slidesPerView: 5,
+                          spaceBetween: 20,
+                        },
+                        768: {
+                          slidesPerView: 5,
+                          spaceBetween: 24,
+                        },
+                        1024: {
+                          slidesPerView: 6,
+                          spaceBetween: 28,
+                        },
+                        1280: {
+                          slidesPerView: 6,
+                          spaceBetween: 30,
+                        },
+                      }}
+                      navigation={{
+                        prevEl: ".FaChevronLeft",
+                        nextEl: ".FaChevronRight",
+                      }}
+                    >
+                      {moviedata?.credits?.cast?.map(actor => (
+                        <SwiperSlide
+                          key={actor.id}>
+                          <Link to={`/actor/${actor.id}`}>
+                            <div className="cast-card w-[100px] md:w-[120px] lg:w-[105px]">
+                              <div className="actor-image w-full aspect-square bg-gradient-to-br from-[#333] to-[#1a1a1a] rounded-xl mb-2 overflow-hidden border border-[#333]">
+                                {actor.profile_path ? (
+                                  <img
+                                    onError={(e) => {
+                                      e.target.src =
+                                        "https://m-carwash.com/wp-content/uploads/2021/02/07.jpg";
+                                    }}
+                                    referrerPolicy="no-referrer"
+                                    src={`https://image.tmdb.org/t/p/w200${actor.profile_path}`}
+                                    alt=""
+                                    className="w-full h-35"
+                                  />
+                                ) : (
+                                  <h1>loading...</h1>
+                                )}
+                              </div>
+                            </div>
+                          </Link>
+                        </SwiperSlide>
+                      ))
+                      }
+                    </Swiper>
                   </div>
                 </div>
               </div>
@@ -367,7 +407,7 @@ const Movie_inside = () => {
                   </h3>
                 </div>
                 <p className="text-white text-lg md:text-xl font-semibold">
-                  1993-12-15
+                  {moviedata?.release_date}
                 </p>
               </div>
 
@@ -380,7 +420,7 @@ const Movie_inside = () => {
                   </h3>
                 </div>
                 <div className="languages flex flex-wrap gap-2.5">
-                  {["German", "Polish", "Hebrew", "English"].map((lang) => (
+                  {moviedata?.origin_country.map((lang) => (
                     <span
                       key={lang}
                       className="px-4 py-2 bg-[#0f0f0f] border border-[#333] hover:border-[#e50000] rounded-lg text-white text-sm transition-colors cursor-pointer"
@@ -444,12 +484,12 @@ const Movie_inside = () => {
                   <h3 className="text-[#999] text-sm md:text-base">Gernes</h3>
                 </div>
                 <div className="genres flex flex-wrap gap-2.5">
-                  {["Drama", "History", "War"].map((genre) => (
+                  {moviedata?.genres.map((genre) => (
                     <span
-                      key={genre}
+                      key={genre.id}
                       className="px-4 py-2 bg-[#0f0f0f] border border-[#333] hover:border-[#e50000] hover:bg-[#e50000] rounded-lg text-white text-sm transition-colors cursor-pointer"
                     >
-                      {genre}
+                      {genre.name}
                     </span>
                   ))}
                 </div>
@@ -462,17 +502,19 @@ const Movie_inside = () => {
                 </h3>
                 <div className="director-info flex items-center gap-4">
                   <div className="director-avatar w-14 h-14 rounded-xl bg-gradient-to-br from-[#333] to-[#1a1a1a] border border-[#333] overflow-hidden flex-shrink-0">
-                    {/* Director photo here */}
+                    {moviedata?.credits.crew.filter((photo) => photo.job === "Director").map((directorPhoto) => (
+                      <img key={directorPhoto.id} src={`https://image.tmdb.org/t/p/original${directorPhoto.profile_path}`} alt="" />
+                    ))
+                    }
                   </div>
                   <div>
-                    <h4 className="text-white text-base md:text-lg font-semibold">
-                      Steven Spielberg
-                    </h4>
-                    <p className="text-[#666] text-sm">Steven Spielberg</p>
+                    {moviedata?.credits.crew.filter((person) => person.job === "Director").map((director) => (
+                      <h3 className="text-white text-base md:text-lg font-semibold" key={director.id}>{director.name}</h3>
+                    ))
+                    }
                   </div>
                 </div>
               </div>
-
               {/* Music Composer */}
               <div className="info-card bg-[#1a1a1a] border border-[#262626] rounded-xl p-5 md:p-6">
                 <h3 className="text-[#999] text-sm md:text-base mb-4">
@@ -480,11 +522,17 @@ const Movie_inside = () => {
                 </h3>
                 <div className="composer-info flex items-center gap-4">
                   <div className="composer-avatar w-14 h-14 rounded-xl bg-gradient-to-br from-[#333] to-[#1a1a1a] border border-[#333] overflow-hidden flex-shrink-0">
-                    {/* Composer photo here */}
+                    {moviedata?.credits.crew.filter((photo) => photo.job === "Original Music Composer").map((directorPhoto) => (
+                      <img key={directorPhoto.id} src={`https://image.tmdb.org/t/p/original${directorPhoto.profile_path}`} alt="" />
+                    ))
+                    }
                   </div>
                   <div>
                     <h4 className="text-white text-base md:text-lg font-semibold">
-                      John Williams
+                      {moviedata?.credits.crew.filter((person) => person.job === "Original Music Composer").map((director) => (
+                      <h3 className="text-white text-base md:text-lg font-semibold" key={director.id}>{director.name}</h3>
+                    ))
+                    }
                     </h4>
                     <p className="text-[#666] text-sm">John Williams</p>
                   </div>

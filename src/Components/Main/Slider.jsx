@@ -9,6 +9,8 @@ import { useLocation } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import axios from "axios";
+import Api_Service from "@/service/Api.Service";
 
 
 function Sliderui() {
@@ -16,23 +18,17 @@ function Sliderui() {
 
 const [swiperInst, setSwiperInst] = useState(null);
 
-
-
-async function api() {
-  let responce = await fetch('https://698a2fe5c04d974bc6a1a138.mockapi.io/movieProjectDatas');
-  let data = await responce.json();
-  setCinemas(data);
+const getMovies = async () => {
+  const responce = await Api_Service.getData('trending/movie/day')
+  setCinemas(responce.results)
+  console.log(responce);
+  
 }
 
-useEffect(() => {
-  api();
   
-}, []);
-
-
-
-  
-  
+  useEffect(() => {
+    getMovies()
+  },[])
 
   return (
     <div className="slider w-full min-h-[320px] md:min-h-[400px] lg:h-[530px] bg-[#141414] px-4 md:px-8 lg:px-12 xl:px-[70px] py-6 md:py-8">
@@ -105,14 +101,15 @@ useEffect(() => {
         className="!pb-8"
       >
         {cinemas &&
-          cinemas.slice(0, 15).map((items, index) => (
-            <SwiperSlide key={items.id || index} className="!h-auto">
-              <Link key={items.id} to={`/movie_inside/${items.id}`}>
-              <div className="card w-full max-w-[260px] mx-auto bg-[rgba(38,38,38,1)] overflow-hidden rounded-[10px] hover:bg-[rgba(48,48,48,1)] transition-colors cursor-pointer">
+          cinemas.map((items) => (
+            
+            <SwiperSlide className="!h-auto">
+              <Link to={`/movie_inside/${items.id}`}>
+              <div key={items.id} className="card w-full max-w-[260px] mx-auto bg-[rgba(38,38,38,1)] overflow-hidden rounded-[10px] hover:bg-[rgba(48,48,48,1)] transition-colors cursor-pointer">
                 <div className="c-img-part w-full aspect-3/4 overflow-hidden">
                   <img
                     className="w-full h-full object-cover p-2"
-                    src={items.poster}
+                    src={`https://image.tmdb.org/t/p/w500/${items?.poster_path}`}
                     
                   />
                 </div>

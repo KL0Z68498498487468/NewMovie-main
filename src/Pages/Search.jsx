@@ -1,9 +1,15 @@
 import Banner from '@/Components/Main/Banner'
 import Footer from '@/Components/Main/Footer'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FaChevronLeft, FaChevronRight, FaSearch, FaStar } from 'react-icons/fa'
 
 function Search() {
+
+    useEffect(()=>{
+    document.documentElement.scrollTop = 0;
+  },[])
+
+
   return (
     <div>
         <div className="search-page w-full min-h-screen bg-[#141414] px-4 pt-10 md:px-8 lg:px-12  xl:px-20  md:py-12  lg:py-16 ">

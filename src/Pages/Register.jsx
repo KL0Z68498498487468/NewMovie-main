@@ -1,9 +1,14 @@
 import Banner from '@/Components/Main/Banner'
 import Footer from '@/Components/Main/Footer'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FaGithub } from 'react-icons/fa'
 
 function Register() {
+
+    useEffect(()=>{
+    document.documentElement.scrollTop = 0;
+  },[])
+
   return (
     <div>
         <div className="login-page w-full min-h-screen bg-[#141414] flex items-center justify-center p-4 md:p-6 lg:pt-23">

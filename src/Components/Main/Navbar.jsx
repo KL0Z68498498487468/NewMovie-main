@@ -47,7 +47,7 @@ function Navbar() {
     </div>
 
     {/* Mobile & Tablet Icons + Menu Button */}
-    <div className="nav-items flex items-center gap-x-3 md:gap-x-4 text-white">
+    <div className="nav-items  flex items-center gap-x-3 md:gap-x-4 text-white ">
         <Link to={"/search"}>
         <FaMagnifyingGlass className='size-4 md:size-5 cursor-pointer hover:text-[#e50000] transition-colors'/>
         </Link>
@@ -61,7 +61,7 @@ function Navbar() {
     </div>
 
     <div className={`lg:hidden fixed top-16 md:top-20 left-0 w-full bg-black border-t border-[#282828]  ${isMenuOpen ? 'block' : 'hidden'}`}>
-        <ul className='flex flex-col gap-y-4 p-6 text-white'>
+        <ul className='flex backdrop-blur-sm  flex-col gap-y-4 p-6 text-white'>
             <Link to={'/'}>
             <li className="cursor-pointer hover:text-[#e50000] transition-colors">Home</li>
             </Link>

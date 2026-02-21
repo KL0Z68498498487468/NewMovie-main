@@ -1,9 +1,14 @@
 import Banner from '@/Components/Main/Banner'
 import Footer from '@/Components/Main/Footer'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FaChevronDown } from 'react-icons/fa'
 
 const Support = () => {
+
+    useEffect(()=>{
+    document.documentElement.scrollTop = 0;
+  },[])
+
   return (
     <div>
         <div className="support-page w-full pt-20 min-h-screen bg-[#141414] px-4 md:px-8 lg:px-12 xl:px-[70px] py-12 md:py-16 lg:py-24">

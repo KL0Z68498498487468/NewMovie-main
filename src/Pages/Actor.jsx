@@ -1,9 +1,13 @@
 import Footer from '@/Components/Main/Footer'
 import Sliderui from '@/Components/Main/Slider'
 import Slideractor from '@/Components/Main/Slideractor'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 function Actor() {
+
+    useEffect(()=>{
+        document.documentElement.scrollTop = 0;
+      },[])
 
   return (
     <div>

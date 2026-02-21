@@ -2,23 +2,32 @@ import React, { useEffect, useMemo, useState } from 'react'
 import Marquee from 'react-fast-marquee'
 import { shuffle } from 'lodash'
 import { FaPlay } from 'react-icons/fa6'
+import axios from 'axios'
+import Marquees from '../Main/Marque'
+import Api_Service from '@/service/Api.Service'
 
 
 function Header() {
 
     const [cinemas, setCinemas] = useState()
 
-    async function api() {
-        let responce = await fetch(`https://698a2fe5c04d974bc6a1a138.mockapi.io/movieProjectDatas`)
-        let data = await responce.json()
-        setCinemas(data)
-    }
+    const getMovies = async () => {
+  const responce = await Api_Service.getData('trending/movie/week')
+  setCinemas(responce.results)
+  console.log(responce);
+  
+}
     useEffect(()=>{
-        api()
+        getMovies()
+        document.documentElement.scrollTop = 0;
     }, [])
+
+
+
     const row1 = useMemo(() => shuffle(cinemas))
     const row2 = useMemo(() => shuffle(cinemas))
     const row3 = useMemo(() => shuffle(cinemas))
+
 
   return (
     <div>
@@ -26,33 +35,9 @@ function Header() {
             <div className="hero w-full h-screen overflow-y-hidden relative">
     <div className="1-layer w-full h-screen bg-[#141414] absolute z-1">
         <div className="line-1 flex flex-col gap-y-2 md:gap-y-4">
-            <Marquee>
-                {
-                    row1 && row1.slice(0, 10).map(items => (
-                        <div className='w-full' key={items.id}>
-                            <img className='w-32 h-48 md:w-40 md:h-56 lg:w-50 lg:h-67 px-1 md:px-2' src={items.poster} alt="" />
-                        </div>
-                    ))
-                }
-            </Marquee>
-            <Marquee>
-                {
-                    row2 && row2.slice(0, 10).map(items => (
-                        <div className='w-full' key={items.id}>
-                            <img className='w-32 h-48 md:w-40 md:h-56 lg:w-[200px] lg:h-67 px-1 md:px-2' src={items.poster} alt="" />
-                        </div>
-                    ))
-                }
-            </Marquee>
-            <Marquee>
-                {
-                    row3 && row3.slice(0, 10).map(items => (
-                        <div className='w-full' key={items.id}>
-                            <img className='w-32 h-48 md:w-40 md:h-56 lg:w-[200px] lg:h-67 px-1 md:px-2' src={items.poster} alt="" />
-                        </div>
-                    ))
-                }
-            </Marquee>
+            <Marquees cinemas={row1}/>
+            <Marquees cinemas={row2}/>
+            <Marquees cinemas={row3}/>
         </div>
     </div>
     <div className="layer-2 w-full px-4 md:px-8 lg:px-16 xl:px-38 text-center h-screen absolute z-2 bg-gradient-to-t from-[#141414]/100 from-10% via-black/70 to-[#141414] flex items-center justify-center flex-col gap-y-2 backdrop-blur-xs md:gap-y-3 lg:gap-y-3.75 pt-16 md:pt-20 lg:pt-25">
