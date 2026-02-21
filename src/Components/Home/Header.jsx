@@ -14,7 +14,6 @@ function Header() {
     const getMovies = async () => {
   const responce = await Api_Service.getData('trending/movie/week')
   setCinemas(responce.results)
-  console.log(responce);
   
 }
     useEffect(()=>{

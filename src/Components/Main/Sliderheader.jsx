@@ -13,13 +13,13 @@ import axios from "axios";
 import Api_Service from "@/service/Api.Service";
 
 
-function Sliderui({url,title, description}) {
+function Sliderhead() {
   const [cinemas, setCinemas] = useState();
 
 const [swiperInst, setSwiperInst] = useState(null);
 
 const getMovies = async () => {
-  const responce = await Api_Service.getData(url)
+  const responce = await Api_Service.getData("/trending/movie/day")
   setCinemas(responce.results)
   console.log(responce);
   
@@ -35,10 +35,10 @@ const getMovies = async () => {
     <div className="w-full min-h-[80px] md:h-[100px] lg:h-[120px] flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-6 mb-6">
       <div className="text-part w-full md:w-auto max-w-[1200px] flex flex-col justify-center gap-2">
         <h1 className="text-white text-xl md:text-2xl lg:text-[28px] font-semibold">
-          {title}
+          Explore our wide variety of categories
         </h1>
         <p className="text-[rgba(153,153,153,1)] text-sm md:text-base">
-          {description}
+          Whether you're looking for a comedy to make you laugh, a drama to make you think, or a documentary to learn something new
         </p>
       </div>
       
@@ -129,4 +129,4 @@ const getMovies = async () => {
   )
 }
 
-export default Sliderui
+export default Sliderhead
