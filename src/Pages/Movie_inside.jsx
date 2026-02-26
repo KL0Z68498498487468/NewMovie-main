@@ -28,7 +28,7 @@ const Movie_inside = () => {
   const testApi = async () => {
     const responce = await Api_Service.getData(`/movie/${id}?append_to_response=credits,videos`)
     setMoviedata(responce);
-
+    
   }
 
   useEffect(() => {
@@ -195,7 +195,10 @@ const Movie_inside = () => {
                                     className="w-full h-35"
                                   />
                                 ) : (
-                                  <h1>loading...</h1>
+                                  <div className="w-full h-full flex justify-center items-center">
+                                    <h1 className="text-amber-50 ">404...</h1>
+                                  </div>
+                                  
                                 )}
                               </div>
                             </div>

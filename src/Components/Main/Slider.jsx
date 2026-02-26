@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaArrowLeft, FaArrowRight, FaStar, FaPlay } from "react-icons/fa";
 import { Virtual, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -11,6 +11,8 @@ import "swiper/css/navigation";
 import Api_Service from "@/service/Api.Service";
 
 function Sliderui({ url, title, description }) {
+  const prev = useRef(null)
+  const next = useRef(null)
   const [cinemas, setCinemas] = useState();
   const [swiperInst, setSwiperInst] = useState(null);
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -94,6 +96,10 @@ function Sliderui({ url, title, description }) {
             }}
             virtual
             className="!pb-12"
+            onBeforeInit={(Swiper) => {
+              Swiper.params.navigation.prevEl = prev.current
+              Swiper.params.navigation.nextEl = next.current
+            }}
           >
             {cinemas &&
               cinemas.map((items, index) => (

@@ -58,7 +58,7 @@ function Actor() {
                     </div>
                 </div>
             </div>
-            <Slideractor />
+            <Slideractor id={actorInfo}/>
             <Footer />
         </div>
 

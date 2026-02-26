@@ -13,14 +13,20 @@ import axios from "axios";
 import Api_Service from "@/service/Api.Service";
 
 
-function Sliderhead() {
+function Sliderhead({id}) {
+
+  let actorId = id.id
+  console.log(actorId);
+  
+  
   const [cinemas, setCinemas] = useState();
 
 const [swiperInst, setSwiperInst] = useState(null);
 
 const getMovies = async () => {
-  const responce = await Api_Service.getData("/trending/movie/day")
-  setCinemas(responce.results)
+  const responce = await Api_Service.getData(`/person/${actorId}/tv_credits`)
+  setCinemas(responce.cast)
+  console.log(responce);
   
 }
 
@@ -113,7 +119,7 @@ const getMovies = async () => {
                 </div>
                 <div className="cinema-name px-4 py-4">
                   <h1 className="text-white text-sm md:text-base truncate">
-                    {items.title}
+                    {items.name}
                   </h1>
                 </div>
               </div>
